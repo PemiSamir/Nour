@@ -1,16 +1,22 @@
 {
   "expo": {
-    "name": "nour",
+    "name": "NOUR",
     "slug": "nour",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
     "scheme": "nour",
-    "userInterfaceStyle": "automatic",
+    "userInterfaceStyle": "dark",
+    "backgroundColor": "#14212B",
     "ios": {
-      "icon": "./assets/expo.icon"
+      "bundleIdentifier": "com.pemisamir.nour",
+      "icon": "./assets/expo.icon",
+      "infoPlist": {
+        "CFBundleDevelopmentRegion": "fr"
+      }
     },
     "android": {
+      "package": "com.pemisamir.nour",
       "adaptiveIcon": {
         "backgroundColor": "#E6F4FE",
         "foregroundImage": "./assets/images/android-icon-foreground.png",
@@ -20,7 +26,7 @@
       "predictiveBackGestureEnabled": false
     },
     "web": {
-      "output": "server",
+      "output": "static",
       "favicon": "./assets/images/favicon.png"
     },
     "plugins": [
@@ -28,7 +34,7 @@
       [
         "expo-splash-screen",
         {
-          "backgroundColor": "#208AEF",
+          "backgroundColor": "#14212B",
           "image": "./assets/images/splash-icon.png",
           "imageWidth": 76
         }
