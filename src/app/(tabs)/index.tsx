@@ -19,7 +19,9 @@ export default function HomeScreen() {
           <Pressable
             accessibilityRole="link"
             style={({ pressed }) => [styles.settingsLink, pressed && styles.pressed]}>
-            <Text color="accent">Paramètres</Text>
+            <Text color="accent" style={styles.linkLabel}>
+              Ouvrir les paramètres
+            </Text>
           </Pressable>
         </Link>
       </SafeAreaView>
@@ -45,6 +47,9 @@ const styles = StyleSheet.create({
     minHeight: sizes.touchTarget,
     paddingHorizontal: spacing.lg,
     justifyContent: 'center',
+  },
+  linkLabel: {
+    textDecorationLine: 'underline',
   },
   pressed: {
     opacity: opacities.pressed,
