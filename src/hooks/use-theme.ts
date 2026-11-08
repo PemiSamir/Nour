@@ -1,14 +1,10 @@
+import { theme, type NourTheme } from '@/theme';
+
 /**
- * Learn more about light and dark modes:
- * https://docs.expo.dev/guides/color-schemes/
+ * Returns the NOUR theme. The app is dark only, so the theme is static for now.
+ * Components read their colors through this hook only, so a dynamic theme can
+ * be added later without changing them.
  */
-
-import { Colors } from '@/constants/theme';
-import { useColorScheme } from '@/hooks/use-color-scheme';
-
-export function useTheme() {
-  const scheme = useColorScheme();
-  const theme = scheme === 'dark' ? 'dark' : 'light';
-
-  return Colors[theme];
+export function useTheme(): NourTheme {
+  return theme;
 }

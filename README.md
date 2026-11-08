@@ -12,8 +12,8 @@ npx expo start
 ## Structure
 
 - `src/app/` : routes Expo Router uniquement (écrans et `_layout.tsx`).
-- `src/components/` : composants réutilisables.
-- `src/constants/` : thème (couleurs, espacements, polices).
+- `src/components/` : composants réutilisables. Les composants de base du système de design sont dans `src/components/ui/`.
+- `src/theme/` : système de design NOUR (couleurs, typographie, espacements, tailles, effets, thème de navigation).
 - `src/hooks/` : hooks partagés.
 
 ## Vérifications

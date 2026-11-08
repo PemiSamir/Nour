@@ -1,0 +1,14 @@
+/** Spacing scale on a 4-point grid, for margins, paddings and gaps. */
+export const spacing = {
+  none: 0,
+  xs: 4,
+  sm: 8,
+  md: 12,
+  lg: 16,
+  xl: 24,
+  '2xl': 32,
+  '3xl': 48,
+  '4xl': 64,
+} as const;
+
+export type SpacingToken = keyof typeof spacing;

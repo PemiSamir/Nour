@@ -1,19 +1,19 @@
 import { StyleSheet } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
-import { ThemedText } from '@/components/themed-text';
-import { ThemedView } from '@/components/themed-view';
-import { MaxContentWidth, Spacing } from '@/constants/theme';
+import { Surface } from '@/components/ui/surface';
+import { Text } from '@/components/ui/text';
+import { sizes, spacing } from '@/theme';
 
 export default function HomeScreen() {
   return (
-    <ThemedView style={styles.container}>
+    <Surface tone="background" style={styles.container}>
       <SafeAreaView style={styles.safeArea}>
-        <ThemedText type="title" style={styles.title}>
+        <Text variant="display" color="accent" align="center">
           NOUR
-        </ThemedText>
+        </Text>
       </SafeAreaView>
-    </ThemedView>
+    </Surface>
   );
 }
 
@@ -25,12 +25,9 @@ const styles = StyleSheet.create({
   },
   safeArea: {
     flex: 1,
-    maxWidth: MaxContentWidth,
-    paddingHorizontal: Spacing.four,
+    maxWidth: sizes.maxContentWidth,
+    paddingHorizontal: spacing.xl,
     alignItems: 'center',
     justifyContent: 'center',
-  },
-  title: {
-    textAlign: 'center',
   },
 });
