@@ -1,0 +1,2175 @@
+{
+  "version": "6",
+  "dialect": "sqlite",
+  "id": "83e44d8c-35b1-4570-a243-f53dc3dd366e",
+  "prevId": "00000000-0000-0000-0000-000000000000",
+  "tables": {
+    "app_settings": {
+      "name": "app_settings",
+      "columns": {
+        "key": {
+          "name": "key",
+          "type": "text",
+          "primaryKey": true,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "value": {
+          "name": "value",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "checkConstraints": {
+        "app_settings_created_at_integer": {
+          "name": "app_settings_created_at_integer",
+          "value": "typeof(\"created_at\") = 'integer'"
+        },
+        "app_settings_updated_at_integer": {
+          "name": "app_settings_updated_at_integer",
+          "value": "typeof(\"updated_at\") = 'integer'"
+        },
+        "app_settings_key_check": {
+          "name": "app_settings_key_check",
+          "value": "length(\"key\") BETWEEN 1 AND 100"
+        },
+        "app_settings_value_check": {
+          "name": "app_settings_value_check",
+          "value": "json_valid(\"value\")"
+        },
+        "app_settings_created_at_check": {
+          "name": "app_settings_created_at_check",
+          "value": "\"created_at\" BETWEEN 946684800000 AND 4102444800000"
+        },
+        "app_settings_updated_at_check": {
+          "name": "app_settings_updated_at_check",
+          "value": "\"updated_at\" >= \"created_at\""
+        }
+      }
+    },
+    "currencies": {
+      "name": "currencies",
+      "columns": {
+        "code": {
+          "name": "code",
+          "type": "text",
+          "primaryKey": true,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "minor_unit": {
+          "name": "minor_unit",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "checkConstraints": {
+        "currencies_minor_unit_integer": {
+          "name": "currencies_minor_unit_integer",
+          "value": "typeof(\"minor_unit\") = 'integer'"
+        },
+        "currencies_code_check": {
+          "name": "currencies_code_check",
+          "value": "\"code\" GLOB '[A-Z][A-Z][A-Z]'"
+        },
+        "currencies_minor_unit_check": {
+          "name": "currencies_minor_unit_check",
+          "value": "\"minor_unit\" BETWEEN 0 AND 4"
+        }
+      }
+    },
+    "dhikr_sessions": {
+      "name": "dhikr_sessions",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "text",
+          "primaryKey": true,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "dhikr_id": {
+          "name": "dhikr_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "entry_mode": {
+          "name": "entry_mode",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "status": {
+          "name": "status",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "count": {
+          "name": "count",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false,
+          "default": 0
+        },
+        "target_count": {
+          "name": "target_count",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "started_at": {
+          "name": "started_at",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "last_counted_at": {
+          "name": "last_counted_at",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "ended_at": {
+          "name": "ended_at",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "local_date": {
+          "name": "local_date",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "time_zone": {
+          "name": "time_zone",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "utc_offset_min": {
+          "name": "utc_offset_min",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "note": {
+          "name": "note",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        }
+      },
+      "indexes": {
+        "dhikr_sessions_one_in_progress": {
+          "name": "dhikr_sessions_one_in_progress",
+          "columns": [
+            "status"
+          ],
+          "isUnique": true,
+          "where": "\"status\" = 'in_progress'"
+        },
+        "dhikr_sessions_by_date": {
+          "name": "dhikr_sessions_by_date",
+          "columns": [
+            "local_date",
+            "status"
+          ],
+          "isUnique": false
+        },
+        "dhikr_sessions_by_dhikr": {
+          "name": "dhikr_sessions_by_dhikr",
+          "columns": [
+            "dhikr_id",
+            "local_date"
+          ],
+          "isUnique": false
+        }
+      },
+      "foreignKeys": {
+        "dhikr_sessions_dhikr_id_dhikrs_id_fk": {
+          "name": "dhikr_sessions_dhikr_id_dhikrs_id_fk",
+          "tableFrom": "dhikr_sessions",
+          "tableTo": "dhikrs",
+          "columnsFrom": [
+            "dhikr_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "restrict",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "checkConstraints": {
+        "dhikr_sessions_count_integer": {
+          "name": "dhikr_sessions_count_integer",
+          "value": "typeof(\"count\") = 'integer'"
+        },
+        "dhikr_sessions_target_count_integer": {
+          "name": "dhikr_sessions_target_count_integer",
+          "value": "\"target_count\" IS NULL OR typeof(\"target_count\") = 'integer'"
+        },
+        "dhikr_sessions_started_at_integer": {
+          "name": "dhikr_sessions_started_at_integer",
+          "value": "typeof(\"started_at\") = 'integer'"
+        },
+        "dhikr_sessions_last_counted_at_integer": {
+          "name": "dhikr_sessions_last_counted_at_integer",
+          "value": "\"last_counted_at\" IS NULL OR typeof(\"last_counted_at\") = 'integer'"
+        },
+        "dhikr_sessions_ended_at_integer": {
+          "name": "dhikr_sessions_ended_at_integer",
+          "value": "\"ended_at\" IS NULL OR typeof(\"ended_at\") = 'integer'"
+        },
+        "dhikr_sessions_utc_offset_min_integer": {
+          "name": "dhikr_sessions_utc_offset_min_integer",
+          "value": "typeof(\"utc_offset_min\") = 'integer'"
+        },
+        "dhikr_sessions_created_at_integer": {
+          "name": "dhikr_sessions_created_at_integer",
+          "value": "typeof(\"created_at\") = 'integer'"
+        },
+        "dhikr_sessions_updated_at_integer": {
+          "name": "dhikr_sessions_updated_at_integer",
+          "value": "typeof(\"updated_at\") = 'integer'"
+        },
+        "dhikr_sessions_id_check": {
+          "name": "dhikr_sessions_id_check",
+          "value": "length(\"id\") = 36"
+        },
+        "dhikr_sessions_entry_mode_check": {
+          "name": "dhikr_sessions_entry_mode_check",
+          "value": "\"entry_mode\" IN ('counter', 'manual')"
+        },
+        "dhikr_sessions_status_check": {
+          "name": "dhikr_sessions_status_check",
+          "value": "\"status\" IN ('in_progress', 'completed', 'abandoned')"
+        },
+        "dhikr_sessions_count_check": {
+          "name": "dhikr_sessions_count_check",
+          "value": "\"count\" >= 0"
+        },
+        "dhikr_sessions_target_count_check": {
+          "name": "dhikr_sessions_target_count_check",
+          "value": "\"target_count\" > 0"
+        },
+        "dhikr_sessions_started_at_check": {
+          "name": "dhikr_sessions_started_at_check",
+          "value": "\"started_at\" BETWEEN 946684800000 AND 4102444800000"
+        },
+        "dhikr_sessions_last_counted_at_check": {
+          "name": "dhikr_sessions_last_counted_at_check",
+          "value": "\"last_counted_at\" IS NULL OR \"last_counted_at\" >= \"started_at\""
+        },
+        "dhikr_sessions_ended_at_check": {
+          "name": "dhikr_sessions_ended_at_check",
+          "value": "\"ended_at\" IS NULL OR \"ended_at\" >= \"started_at\""
+        },
+        "dhikr_sessions_local_date_check": {
+          "name": "dhikr_sessions_local_date_check",
+          "value": "\"local_date\" IS date(\"started_at\" / 1000 + \"utc_offset_min\" * 60, 'unixepoch')"
+        },
+        "dhikr_sessions_time_zone_check": {
+          "name": "dhikr_sessions_time_zone_check",
+          "value": "length(\"time_zone\") BETWEEN 1 AND 64"
+        },
+        "dhikr_sessions_utc_offset_check": {
+          "name": "dhikr_sessions_utc_offset_check",
+          "value": "\"utc_offset_min\" BETWEEN -720 AND 840 AND \"utc_offset_min\" % 15 = 0"
+        },
+        "dhikr_sessions_created_at_check": {
+          "name": "dhikr_sessions_created_at_check",
+          "value": "\"created_at\" BETWEEN 946684800000 AND 4102444800000"
+        },
+        "dhikr_sessions_updated_at_check": {
+          "name": "dhikr_sessions_updated_at_check",
+          "value": "\"updated_at\" >= \"created_at\""
+        },
+        "dhikr_sessions_open_check": {
+          "name": "dhikr_sessions_open_check",
+          "value": "(\"status\" = 'in_progress') = (\"ended_at\" IS NULL)"
+        },
+        "dhikr_sessions_manual_check": {
+          "name": "dhikr_sessions_manual_check",
+          "value": "\"entry_mode\" = 'counter' OR \"status\" = 'completed'"
+        },
+        "dhikr_sessions_completed_count_check": {
+          "name": "dhikr_sessions_completed_count_check",
+          "value": "\"status\" <> 'completed' OR \"count\" > 0"
+        }
+      }
+    },
+    "dhikrs": {
+      "name": "dhikrs",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "text",
+          "primaryKey": true,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "name": {
+          "name": "name",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "arabic_text": {
+          "name": "arabic_text",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "transliteration": {
+          "name": "transliteration",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "translation": {
+          "name": "translation",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "default_target": {
+          "name": "default_target",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "sort_order": {
+          "name": "sort_order",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false,
+          "default": 0
+        },
+        "archived_at": {
+          "name": "archived_at",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        }
+      },
+      "indexes": {
+        "dhikrs_active_name": {
+          "name": "dhikrs_active_name",
+          "columns": [
+            "\"name\" COLLATE NOCASE"
+          ],
+          "isUnique": true,
+          "where": "\"archived_at\" IS NULL"
+        }
+      },
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "checkConstraints": {
+        "dhikrs_default_target_integer": {
+          "name": "dhikrs_default_target_integer",
+          "value": "\"default_target\" IS NULL OR typeof(\"default_target\") = 'integer'"
+        },
+        "dhikrs_sort_order_integer": {
+          "name": "dhikrs_sort_order_integer",
+          "value": "typeof(\"sort_order\") = 'integer'"
+        },
+        "dhikrs_archived_at_integer": {
+          "name": "dhikrs_archived_at_integer",
+          "value": "\"archived_at\" IS NULL OR typeof(\"archived_at\") = 'integer'"
+        },
+        "dhikrs_created_at_integer": {
+          "name": "dhikrs_created_at_integer",
+          "value": "typeof(\"created_at\") = 'integer'"
+        },
+        "dhikrs_updated_at_integer": {
+          "name": "dhikrs_updated_at_integer",
+          "value": "typeof(\"updated_at\") = 'integer'"
+        },
+        "dhikrs_id_check": {
+          "name": "dhikrs_id_check",
+          "value": "length(\"id\") = 36"
+        },
+        "dhikrs_name_check": {
+          "name": "dhikrs_name_check",
+          "value": "length(trim(\"name\")) BETWEEN 1 AND 120"
+        },
+        "dhikrs_default_target_check": {
+          "name": "dhikrs_default_target_check",
+          "value": "\"default_target\" > 0"
+        },
+        "dhikrs_archived_at_check": {
+          "name": "dhikrs_archived_at_check",
+          "value": "\"archived_at\" IS NULL OR \"archived_at\" >= \"created_at\""
+        },
+        "dhikrs_created_at_check": {
+          "name": "dhikrs_created_at_check",
+          "value": "\"created_at\" BETWEEN 946684800000 AND 4102444800000"
+        },
+        "dhikrs_updated_at_check": {
+          "name": "dhikrs_updated_at_check",
+          "value": "\"updated_at\" >= \"created_at\""
+        }
+      }
+    },
+    "fasts": {
+      "name": "fasts",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "text",
+          "primaryKey": true,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "local_date": {
+          "name": "local_date",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "kind": {
+          "name": "kind",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "status": {
+          "name": "status",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "time_zone": {
+          "name": "time_zone",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "note": {
+          "name": "note",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        }
+      },
+      "indexes": {
+        "fasts_by_status": {
+          "name": "fasts_by_status",
+          "columns": [
+            "status",
+            "local_date"
+          ],
+          "isUnique": false
+        },
+        "fasts_local_date_unique": {
+          "name": "fasts_local_date_unique",
+          "columns": [
+            "local_date"
+          ],
+          "isUnique": true
+        }
+      },
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "checkConstraints": {
+        "fasts_created_at_integer": {
+          "name": "fasts_created_at_integer",
+          "value": "typeof(\"created_at\") = 'integer'"
+        },
+        "fasts_updated_at_integer": {
+          "name": "fasts_updated_at_integer",
+          "value": "typeof(\"updated_at\") = 'integer'"
+        },
+        "fasts_id_check": {
+          "name": "fasts_id_check",
+          "value": "length(\"id\") = 36"
+        },
+        "fasts_local_date_check": {
+          "name": "fasts_local_date_check",
+          "value": "\"local_date\" IS date(\"local_date\")"
+        },
+        "fasts_kind_check": {
+          "name": "fasts_kind_check",
+          "value": "\"kind\" IN ('monday', 'thursday', 'white_days', 'arafah', 'ashura', 'tasua', 'shawwal', 'dawud', 'other')"
+        },
+        "fasts_status_check": {
+          "name": "fasts_status_check",
+          "value": "\"status\" IN ('planned', 'completed', 'broken')"
+        },
+        "fasts_time_zone_check": {
+          "name": "fasts_time_zone_check",
+          "value": "length(\"time_zone\") BETWEEN 1 AND 64"
+        },
+        "fasts_created_at_check": {
+          "name": "fasts_created_at_check",
+          "value": "\"created_at\" BETWEEN 946684800000 AND 4102444800000"
+        },
+        "fasts_updated_at_check": {
+          "name": "fasts_updated_at_check",
+          "value": "\"updated_at\" >= \"created_at\""
+        }
+      }
+    },
+    "goal_reminders": {
+      "name": "goal_reminders",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "text",
+          "primaryKey": true,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "goal_id": {
+          "name": "goal_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "kind": {
+          "name": "kind",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "time_of_day_min": {
+          "name": "time_of_day_min",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "weekdays_mask": {
+          "name": "weekdays_mask",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "lead_minutes": {
+          "name": "lead_minutes",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "only_if_incomplete": {
+          "name": "only_if_incomplete",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false,
+          "default": 1
+        },
+        "is_enabled": {
+          "name": "is_enabled",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false,
+          "default": 1
+        },
+        "message": {
+          "name": "message",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        }
+      },
+      "indexes": {
+        "goal_reminders_by_goal": {
+          "name": "goal_reminders_by_goal",
+          "columns": [
+            "goal_id"
+          ],
+          "isUnique": false,
+          "where": "\"is_enabled\" = 1"
+        }
+      },
+      "foreignKeys": {
+        "goal_reminders_goal_id_goals_id_fk": {
+          "name": "goal_reminders_goal_id_goals_id_fk",
+          "tableFrom": "goal_reminders",
+          "tableTo": "goals",
+          "columnsFrom": [
+            "goal_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "restrict",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "checkConstraints": {
+        "goal_reminders_time_of_day_min_integer": {
+          "name": "goal_reminders_time_of_day_min_integer",
+          "value": "\"time_of_day_min\" IS NULL OR typeof(\"time_of_day_min\") = 'integer'"
+        },
+        "goal_reminders_weekdays_mask_integer": {
+          "name": "goal_reminders_weekdays_mask_integer",
+          "value": "\"weekdays_mask\" IS NULL OR typeof(\"weekdays_mask\") = 'integer'"
+        },
+        "goal_reminders_lead_minutes_integer": {
+          "name": "goal_reminders_lead_minutes_integer",
+          "value": "\"lead_minutes\" IS NULL OR typeof(\"lead_minutes\") = 'integer'"
+        },
+        "goal_reminders_only_if_incomplete_integer": {
+          "name": "goal_reminders_only_if_incomplete_integer",
+          "value": "typeof(\"only_if_incomplete\") = 'integer'"
+        },
+        "goal_reminders_is_enabled_integer": {
+          "name": "goal_reminders_is_enabled_integer",
+          "value": "typeof(\"is_enabled\") = 'integer'"
+        },
+        "goal_reminders_created_at_integer": {
+          "name": "goal_reminders_created_at_integer",
+          "value": "typeof(\"created_at\") = 'integer'"
+        },
+        "goal_reminders_updated_at_integer": {
+          "name": "goal_reminders_updated_at_integer",
+          "value": "typeof(\"updated_at\") = 'integer'"
+        },
+        "goal_reminders_id_check": {
+          "name": "goal_reminders_id_check",
+          "value": "length(\"id\") = 36"
+        },
+        "goal_reminders_kind_check": {
+          "name": "goal_reminders_kind_check",
+          "value": "\"kind\" IN ('fixed_time', 'before_period_end')"
+        },
+        "goal_reminders_time_of_day_check": {
+          "name": "goal_reminders_time_of_day_check",
+          "value": "\"time_of_day_min\" BETWEEN 0 AND 1439"
+        },
+        "goal_reminders_weekdays_check": {
+          "name": "goal_reminders_weekdays_check",
+          "value": "\"weekdays_mask\" BETWEEN 1 AND 127"
+        },
+        "goal_reminders_lead_check": {
+          "name": "goal_reminders_lead_check",
+          "value": "\"lead_minutes\" BETWEEN 1 AND 527040"
+        },
+        "goal_reminders_only_if_incomplete_check": {
+          "name": "goal_reminders_only_if_incomplete_check",
+          "value": "\"only_if_incomplete\" IN (0, 1)"
+        },
+        "goal_reminders_is_enabled_check": {
+          "name": "goal_reminders_is_enabled_check",
+          "value": "\"is_enabled\" IN (0, 1)"
+        },
+        "goal_reminders_message_check": {
+          "name": "goal_reminders_message_check",
+          "value": "\"message\" IS NULL OR length(\"message\") <= 200"
+        },
+        "goal_reminders_created_at_check": {
+          "name": "goal_reminders_created_at_check",
+          "value": "\"created_at\" BETWEEN 946684800000 AND 4102444800000"
+        },
+        "goal_reminders_updated_at_check": {
+          "name": "goal_reminders_updated_at_check",
+          "value": "\"updated_at\" >= \"created_at\""
+        },
+        "goal_reminders_fixed_time_check": {
+          "name": "goal_reminders_fixed_time_check",
+          "value": "(\"kind\" = 'fixed_time') = (\"time_of_day_min\" IS NOT NULL)"
+        },
+        "goal_reminders_weekdays_kind_check": {
+          "name": "goal_reminders_weekdays_kind_check",
+          "value": "\"kind\" = 'fixed_time' OR \"weekdays_mask\" IS NULL"
+        },
+        "goal_reminders_lead_kind_check": {
+          "name": "goal_reminders_lead_kind_check",
+          "value": "(\"kind\" = 'before_period_end') = (\"lead_minutes\" IS NOT NULL)"
+        }
+      }
+    },
+    "goal_versions": {
+      "name": "goal_versions",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "text",
+          "primaryKey": true,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "goal_id": {
+          "name": "goal_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "period": {
+          "name": "period",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "target_value": {
+          "name": "target_value",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "effective_from": {
+          "name": "effective_from",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "effective_to": {
+          "name": "effective_to",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "open_ref": {
+          "name": "open_ref",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "change_reason": {
+          "name": "change_reason",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        }
+      },
+      "indexes": {
+        "goal_versions_one_open": {
+          "name": "goal_versions_one_open",
+          "columns": [
+            "goal_id"
+          ],
+          "isUnique": true,
+          "where": "\"effective_to\" IS NULL"
+        },
+        "goal_versions_by_goal": {
+          "name": "goal_versions_by_goal",
+          "columns": [
+            "goal_id",
+            "effective_from"
+          ],
+          "isUnique": false
+        },
+        "goal_versions_open_ref_goal_unique": {
+          "name": "goal_versions_open_ref_goal_unique",
+          "columns": [
+            "open_ref",
+            "goal_id"
+          ],
+          "isUnique": true
+        }
+      },
+      "foreignKeys": {
+        "goal_versions_goal_id_goals_id_fk": {
+          "name": "goal_versions_goal_id_goals_id_fk",
+          "tableFrom": "goal_versions",
+          "tableTo": "goals",
+          "columnsFrom": [
+            "goal_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "restrict",
+          "onUpdate": "no action"
+        },
+        "goal_versions_open_fk": {
+          "name": "goal_versions_open_fk",
+          "tableFrom": "goal_versions",
+          "tableTo": "goals",
+          "columnsFrom": [
+            "goal_id",
+            "open_ref"
+          ],
+          "columnsTo": [
+            "id",
+            "current_version_id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "checkConstraints": {
+        "goal_versions_target_value_integer": {
+          "name": "goal_versions_target_value_integer",
+          "value": "typeof(\"target_value\") = 'integer'"
+        },
+        "goal_versions_created_at_integer": {
+          "name": "goal_versions_created_at_integer",
+          "value": "typeof(\"created_at\") = 'integer'"
+        },
+        "goal_versions_updated_at_integer": {
+          "name": "goal_versions_updated_at_integer",
+          "value": "typeof(\"updated_at\") = 'integer'"
+        },
+        "goal_versions_id_check": {
+          "name": "goal_versions_id_check",
+          "value": "length(\"id\") = 36"
+        },
+        "goal_versions_period_check": {
+          "name": "goal_versions_period_check",
+          "value": "\"period\" IN ('daily', 'weekly', 'monthly', 'yearly')"
+        },
+        "goal_versions_target_check": {
+          "name": "goal_versions_target_check",
+          "value": "\"target_value\" BETWEEN 1 AND 999999999999999"
+        },
+        "goal_versions_from_check": {
+          "name": "goal_versions_from_check",
+          "value": "\"effective_from\" IS date(\"effective_from\")"
+        },
+        "goal_versions_to_check": {
+          "name": "goal_versions_to_check",
+          "value": "\"effective_to\" IS NULL OR (\"effective_to\" IS date(\"effective_to\") AND \"effective_to\" >= \"effective_from\")"
+        },
+        "goal_versions_created_at_check": {
+          "name": "goal_versions_created_at_check",
+          "value": "\"created_at\" BETWEEN 946684800000 AND 4102444800000"
+        },
+        "goal_versions_updated_at_check": {
+          "name": "goal_versions_updated_at_check",
+          "value": "\"updated_at\" >= \"created_at\""
+        },
+        "goal_versions_open_ref_check": {
+          "name": "goal_versions_open_ref_check",
+          "value": "\"open_ref\" IS (CASE WHEN \"effective_to\" IS NULL THEN \"id\" END)"
+        },
+        "goal_versions_start_aligned_check": {
+          "name": "goal_versions_start_aligned_check",
+          "value": "\"period\" = 'daily'\n        OR (\"period\" = 'weekly' AND strftime('%w', \"effective_from\") = '1')\n        OR (\"period\" = 'monthly' AND strftime('%d', \"effective_from\") = '01')\n        OR (\"period\" = 'yearly' AND strftime('%m-%d', \"effective_from\") = '01-01')"
+        },
+        "goal_versions_end_aligned_check": {
+          "name": "goal_versions_end_aligned_check",
+          "value": "\"effective_to\" IS NULL OR \"period\" = 'daily'\n        OR (\"period\" = 'weekly' AND strftime('%w', \"effective_to\") = '0')\n        OR (\"period\" = 'monthly' AND \"effective_to\" IS date(\"effective_to\", 'start of month', '+1 month', '-1 day'))\n        OR (\"period\" = 'yearly' AND strftime('%m-%d', \"effective_to\") = '12-31')"
+        }
+      }
+    },
+    "goals": {
+      "name": "goals",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "text",
+          "primaryKey": true,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "title": {
+          "name": "title",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "activity": {
+          "name": "activity",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "metric": {
+          "name": "metric",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "dhikr_id": {
+          "name": "dhikr_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "night_prayer_kind": {
+          "name": "night_prayer_kind",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "quran_mode": {
+          "name": "quran_mode",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "currency": {
+          "name": "currency",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "status": {
+          "name": "status",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "archived_at": {
+          "name": "archived_at",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "current_version_id": {
+          "name": "current_version_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        }
+      },
+      "indexes": {
+        "goals_id_current_version_unique": {
+          "name": "goals_id_current_version_unique",
+          "columns": [
+            "id",
+            "current_version_id"
+          ],
+          "isUnique": true
+        }
+      },
+      "foreignKeys": {
+        "goals_dhikr_id_dhikrs_id_fk": {
+          "name": "goals_dhikr_id_dhikrs_id_fk",
+          "tableFrom": "goals",
+          "tableTo": "dhikrs",
+          "columnsFrom": [
+            "dhikr_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "restrict",
+          "onUpdate": "no action"
+        },
+        "goals_currency_currencies_code_fk": {
+          "name": "goals_currency_currencies_code_fk",
+          "tableFrom": "goals",
+          "tableTo": "currencies",
+          "columnsFrom": [
+            "currency"
+          ],
+          "columnsTo": [
+            "code"
+          ],
+          "onDelete": "restrict",
+          "onUpdate": "no action"
+        },
+        "goals_current_version_fk": {
+          "name": "goals_current_version_fk",
+          "tableFrom": "goals",
+          "tableTo": "goal_versions",
+          "columnsFrom": [
+            "current_version_id",
+            "id"
+          ],
+          "columnsTo": [
+            "open_ref",
+            "goal_id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "checkConstraints": {
+        "goals_archived_at_integer": {
+          "name": "goals_archived_at_integer",
+          "value": "\"archived_at\" IS NULL OR typeof(\"archived_at\") = 'integer'"
+        },
+        "goals_created_at_integer": {
+          "name": "goals_created_at_integer",
+          "value": "typeof(\"created_at\") = 'integer'"
+        },
+        "goals_updated_at_integer": {
+          "name": "goals_updated_at_integer",
+          "value": "typeof(\"updated_at\") = 'integer'"
+        },
+        "goals_id_check": {
+          "name": "goals_id_check",
+          "value": "length(\"id\") = 36"
+        },
+        "goals_title_check": {
+          "name": "goals_title_check",
+          "value": "length(trim(\"title\")) BETWEEN 1 AND 120"
+        },
+        "goals_activity_check": {
+          "name": "goals_activity_check",
+          "value": "\"activity\" IN ('dhikr', 'night_prayer', 'quran', 'fasting', 'sadaqa')"
+        },
+        "goals_night_prayer_kind_check": {
+          "name": "goals_night_prayer_kind_check",
+          "value": "\"night_prayer_kind\" IN ('qiyam', 'tahajjud', 'witr')"
+        },
+        "goals_quran_mode_check": {
+          "name": "goals_quran_mode_check",
+          "value": "\"quran_mode\" IN ('reading', 'memorization', 'revision')"
+        },
+        "goals_status_check": {
+          "name": "goals_status_check",
+          "value": "\"status\" IN ('active', 'archived')"
+        },
+        "goals_created_at_check": {
+          "name": "goals_created_at_check",
+          "value": "\"created_at\" BETWEEN 946684800000 AND 4102444800000"
+        },
+        "goals_updated_at_check": {
+          "name": "goals_updated_at_check",
+          "value": "\"updated_at\" >= \"created_at\""
+        },
+        "goals_metric_check": {
+          "name": "goals_metric_check",
+          "value": "(\"activity\" = 'dhikr' AND \"metric\" IN ('repetitions', 'sessions'))\n        OR (\"activity\" = 'night_prayer' AND \"metric\" IN ('rakaat', 'nights'))\n        OR (\"activity\" = 'quran' AND \"metric\" IN ('pages', 'minutes'))\n        OR (\"activity\" = 'fasting' AND \"metric\" = 'days')\n        OR (\"activity\" = 'sadaqa' AND \"metric\" IN ('occurrences', 'amount'))"
+        },
+        "goals_dhikr_filter_check": {
+          "name": "goals_dhikr_filter_check",
+          "value": "\"dhikr_id\" IS NULL OR \"activity\" = 'dhikr'"
+        },
+        "goals_night_prayer_filter_check": {
+          "name": "goals_night_prayer_filter_check",
+          "value": "\"night_prayer_kind\" IS NULL OR \"activity\" = 'night_prayer'"
+        },
+        "goals_quran_filter_check": {
+          "name": "goals_quran_filter_check",
+          "value": "\"quran_mode\" IS NULL OR \"activity\" = 'quran'"
+        },
+        "goals_currency_check": {
+          "name": "goals_currency_check",
+          "value": "(\"metric\" = 'amount') = (\"currency\" IS NOT NULL)"
+        },
+        "goals_archived_check": {
+          "name": "goals_archived_check",
+          "value": "(\"status\" = 'archived') = (\"archived_at\" IS NOT NULL)"
+        },
+        "goals_archived_at_check": {
+          "name": "goals_archived_at_check",
+          "value": "\"archived_at\" IS NULL OR \"archived_at\" >= \"created_at\""
+        },
+        "goals_current_version_check": {
+          "name": "goals_current_version_check",
+          "value": "(\"status\" = 'active') = (\"current_version_id\" IS NOT NULL)"
+        }
+      }
+    },
+    "night_prayer_sessions": {
+      "name": "night_prayer_sessions",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "text",
+          "primaryKey": true,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "night_id": {
+          "name": "night_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "night_date": {
+          "name": "night_date",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "started_at": {
+          "name": "started_at",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "ended_at": {
+          "name": "ended_at",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "cutoff_min": {
+          "name": "cutoff_min",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "recorded_at": {
+          "name": "recorded_at",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "time_zone": {
+          "name": "time_zone",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "utc_offset_min": {
+          "name": "utc_offset_min",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "note": {
+          "name": "note",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        }
+      },
+      "indexes": {
+        "night_prayer_sessions_by_night": {
+          "name": "night_prayer_sessions_by_night",
+          "columns": [
+            "night_id"
+          ],
+          "isUnique": false
+        },
+        "night_prayer_sessions_id_night_unique": {
+          "name": "night_prayer_sessions_id_night_unique",
+          "columns": [
+            "id",
+            "night_id"
+          ],
+          "isUnique": true
+        }
+      },
+      "foreignKeys": {
+        "night_prayer_sessions_night_fk": {
+          "name": "night_prayer_sessions_night_fk",
+          "tableFrom": "night_prayer_sessions",
+          "tableTo": "nights",
+          "columnsFrom": [
+            "night_id",
+            "night_date"
+          ],
+          "columnsTo": [
+            "id",
+            "night_date"
+          ],
+          "onDelete": "restrict",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "checkConstraints": {
+        "night_prayer_sessions_started_at_integer": {
+          "name": "night_prayer_sessions_started_at_integer",
+          "value": "\"started_at\" IS NULL OR typeof(\"started_at\") = 'integer'"
+        },
+        "night_prayer_sessions_ended_at_integer": {
+          "name": "night_prayer_sessions_ended_at_integer",
+          "value": "\"ended_at\" IS NULL OR typeof(\"ended_at\") = 'integer'"
+        },
+        "night_prayer_sessions_cutoff_min_integer": {
+          "name": "night_prayer_sessions_cutoff_min_integer",
+          "value": "typeof(\"cutoff_min\") = 'integer'"
+        },
+        "night_prayer_sessions_recorded_at_integer": {
+          "name": "night_prayer_sessions_recorded_at_integer",
+          "value": "typeof(\"recorded_at\") = 'integer'"
+        },
+        "night_prayer_sessions_utc_offset_min_integer": {
+          "name": "night_prayer_sessions_utc_offset_min_integer",
+          "value": "typeof(\"utc_offset_min\") = 'integer'"
+        },
+        "night_prayer_sessions_created_at_integer": {
+          "name": "night_prayer_sessions_created_at_integer",
+          "value": "typeof(\"created_at\") = 'integer'"
+        },
+        "night_prayer_sessions_updated_at_integer": {
+          "name": "night_prayer_sessions_updated_at_integer",
+          "value": "typeof(\"updated_at\") = 'integer'"
+        },
+        "night_prayer_sessions_id_check": {
+          "name": "night_prayer_sessions_id_check",
+          "value": "length(\"id\") = 36"
+        },
+        "night_prayer_sessions_started_at_check": {
+          "name": "night_prayer_sessions_started_at_check",
+          "value": "\"started_at\" BETWEEN 946684800000 AND 4102444800000"
+        },
+        "night_prayer_sessions_cutoff_check": {
+          "name": "night_prayer_sessions_cutoff_check",
+          "value": "\"cutoff_min\" BETWEEN 0 AND 720"
+        },
+        "night_prayer_sessions_recorded_at_check": {
+          "name": "night_prayer_sessions_recorded_at_check",
+          "value": "\"recorded_at\" BETWEEN 946684800000 AND 4102444800000"
+        },
+        "night_prayer_sessions_time_zone_check": {
+          "name": "night_prayer_sessions_time_zone_check",
+          "value": "length(\"time_zone\") BETWEEN 1 AND 64"
+        },
+        "night_prayer_sessions_utc_offset_check": {
+          "name": "night_prayer_sessions_utc_offset_check",
+          "value": "\"utc_offset_min\" BETWEEN -720 AND 840 AND \"utc_offset_min\" % 15 = 0"
+        },
+        "night_prayer_sessions_created_at_check": {
+          "name": "night_prayer_sessions_created_at_check",
+          "value": "\"created_at\" BETWEEN 946684800000 AND 4102444800000"
+        },
+        "night_prayer_sessions_updated_at_check": {
+          "name": "night_prayer_sessions_updated_at_check",
+          "value": "\"updated_at\" >= \"created_at\""
+        },
+        "night_prayer_sessions_end_needs_start_check": {
+          "name": "night_prayer_sessions_end_needs_start_check",
+          "value": "\"started_at\" IS NOT NULL OR \"ended_at\" IS NULL"
+        },
+        "night_prayer_sessions_duration_check": {
+          "name": "night_prayer_sessions_duration_check",
+          "value": "\"ended_at\" IS NULL OR \"ended_at\" BETWEEN \"started_at\" AND \"started_at\" + 43200000"
+        },
+        "night_prayer_sessions_night_date_check": {
+          "name": "night_prayer_sessions_night_date_check",
+          "value": "\"started_at\" IS NULL OR \"night_date\" IS date(\"started_at\" / 1000 + \"utc_offset_min\" * 60 - \"cutoff_min\" * 60, 'unixepoch')"
+        }
+      }
+    },
+    "night_prayer_units": {
+      "name": "night_prayer_units",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "text",
+          "primaryKey": true,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "session_id": {
+          "name": "session_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "night_id": {
+          "name": "night_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "kind": {
+          "name": "kind",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "rakaat": {
+          "name": "rakaat",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "position": {
+          "name": "position",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        }
+      },
+      "indexes": {
+        "night_prayer_units_by_night": {
+          "name": "night_prayer_units_by_night",
+          "columns": [
+            "night_id",
+            "kind"
+          ],
+          "isUnique": false
+        },
+        "night_prayer_units_session_position_unique": {
+          "name": "night_prayer_units_session_position_unique",
+          "columns": [
+            "session_id",
+            "position"
+          ],
+          "isUnique": true
+        }
+      },
+      "foreignKeys": {
+        "night_prayer_units_session_fk": {
+          "name": "night_prayer_units_session_fk",
+          "tableFrom": "night_prayer_units",
+          "tableTo": "night_prayer_sessions",
+          "columnsFrom": [
+            "session_id",
+            "night_id"
+          ],
+          "columnsTo": [
+            "id",
+            "night_id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "checkConstraints": {
+        "night_prayer_units_rakaat_integer": {
+          "name": "night_prayer_units_rakaat_integer",
+          "value": "typeof(\"rakaat\") = 'integer'"
+        },
+        "night_prayer_units_position_integer": {
+          "name": "night_prayer_units_position_integer",
+          "value": "typeof(\"position\") = 'integer'"
+        },
+        "night_prayer_units_created_at_integer": {
+          "name": "night_prayer_units_created_at_integer",
+          "value": "typeof(\"created_at\") = 'integer'"
+        },
+        "night_prayer_units_updated_at_integer": {
+          "name": "night_prayer_units_updated_at_integer",
+          "value": "typeof(\"updated_at\") = 'integer'"
+        },
+        "night_prayer_units_id_check": {
+          "name": "night_prayer_units_id_check",
+          "value": "length(\"id\") = 36"
+        },
+        "night_prayer_units_kind_check": {
+          "name": "night_prayer_units_kind_check",
+          "value": "\"kind\" IN ('qiyam', 'tahajjud', 'witr')"
+        },
+        "night_prayer_units_rakaat_check": {
+          "name": "night_prayer_units_rakaat_check",
+          "value": "\"rakaat\" BETWEEN 1 AND 99"
+        },
+        "night_prayer_units_position_check": {
+          "name": "night_prayer_units_position_check",
+          "value": "\"position\" >= 1"
+        },
+        "night_prayer_units_created_at_check": {
+          "name": "night_prayer_units_created_at_check",
+          "value": "\"created_at\" BETWEEN 946684800000 AND 4102444800000"
+        },
+        "night_prayer_units_updated_at_check": {
+          "name": "night_prayer_units_updated_at_check",
+          "value": "\"updated_at\" >= \"created_at\""
+        }
+      }
+    },
+    "nights": {
+      "name": "nights",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "text",
+          "primaryKey": true,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "night_date": {
+          "name": "night_date",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "note": {
+          "name": "note",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        }
+      },
+      "indexes": {
+        "nights_night_date_unique": {
+          "name": "nights_night_date_unique",
+          "columns": [
+            "night_date"
+          ],
+          "isUnique": true
+        },
+        "nights_id_night_date_unique": {
+          "name": "nights_id_night_date_unique",
+          "columns": [
+            "id",
+            "night_date"
+          ],
+          "isUnique": true
+        }
+      },
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "checkConstraints": {
+        "nights_created_at_integer": {
+          "name": "nights_created_at_integer",
+          "value": "typeof(\"created_at\") = 'integer'"
+        },
+        "nights_updated_at_integer": {
+          "name": "nights_updated_at_integer",
+          "value": "typeof(\"updated_at\") = 'integer'"
+        },
+        "nights_id_check": {
+          "name": "nights_id_check",
+          "value": "length(\"id\") = 36"
+        },
+        "nights_night_date_check": {
+          "name": "nights_night_date_check",
+          "value": "\"night_date\" IS date(\"night_date\")"
+        },
+        "nights_created_at_check": {
+          "name": "nights_created_at_check",
+          "value": "\"created_at\" BETWEEN 946684800000 AND 4102444800000"
+        },
+        "nights_updated_at_check": {
+          "name": "nights_updated_at_check",
+          "value": "\"updated_at\" >= \"created_at\""
+        }
+      }
+    },
+    "quran_readings": {
+      "name": "quran_readings",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "text",
+          "primaryKey": true,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "mushaf": {
+          "name": "mushaf",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false,
+          "default": "'madinah_604'"
+        },
+        "mode": {
+          "name": "mode",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "start_page": {
+          "name": "start_page",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "end_page": {
+          "name": "end_page",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "start_surah": {
+          "name": "start_surah",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "start_ayah": {
+          "name": "start_ayah",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "end_surah": {
+          "name": "end_surah",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "end_ayah": {
+          "name": "end_ayah",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "duration_min": {
+          "name": "duration_min",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "occurred_at": {
+          "name": "occurred_at",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "local_date": {
+          "name": "local_date",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "time_zone": {
+          "name": "time_zone",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "utc_offset_min": {
+          "name": "utc_offset_min",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "note": {
+          "name": "note",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        }
+      },
+      "indexes": {
+        "quran_readings_by_date": {
+          "name": "quran_readings_by_date",
+          "columns": [
+            "local_date",
+            "mode"
+          ],
+          "isUnique": false
+        }
+      },
+      "foreignKeys": {
+        "quran_readings_start_surah_quran_surahs_number_fk": {
+          "name": "quran_readings_start_surah_quran_surahs_number_fk",
+          "tableFrom": "quran_readings",
+          "tableTo": "quran_surahs",
+          "columnsFrom": [
+            "start_surah"
+          ],
+          "columnsTo": [
+            "number"
+          ],
+          "onDelete": "restrict",
+          "onUpdate": "no action"
+        },
+        "quran_readings_end_surah_quran_surahs_number_fk": {
+          "name": "quran_readings_end_surah_quran_surahs_number_fk",
+          "tableFrom": "quran_readings",
+          "tableTo": "quran_surahs",
+          "columnsFrom": [
+            "end_surah"
+          ],
+          "columnsTo": [
+            "number"
+          ],
+          "onDelete": "restrict",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "checkConstraints": {
+        "quran_readings_start_page_integer": {
+          "name": "quran_readings_start_page_integer",
+          "value": "typeof(\"start_page\") = 'integer'"
+        },
+        "quran_readings_end_page_integer": {
+          "name": "quran_readings_end_page_integer",
+          "value": "typeof(\"end_page\") = 'integer'"
+        },
+        "quran_readings_start_surah_integer": {
+          "name": "quran_readings_start_surah_integer",
+          "value": "\"start_surah\" IS NULL OR typeof(\"start_surah\") = 'integer'"
+        },
+        "quran_readings_start_ayah_integer": {
+          "name": "quran_readings_start_ayah_integer",
+          "value": "\"start_ayah\" IS NULL OR typeof(\"start_ayah\") = 'integer'"
+        },
+        "quran_readings_end_surah_integer": {
+          "name": "quran_readings_end_surah_integer",
+          "value": "\"end_surah\" IS NULL OR typeof(\"end_surah\") = 'integer'"
+        },
+        "quran_readings_end_ayah_integer": {
+          "name": "quran_readings_end_ayah_integer",
+          "value": "\"end_ayah\" IS NULL OR typeof(\"end_ayah\") = 'integer'"
+        },
+        "quran_readings_duration_min_integer": {
+          "name": "quran_readings_duration_min_integer",
+          "value": "\"duration_min\" IS NULL OR typeof(\"duration_min\") = 'integer'"
+        },
+        "quran_readings_occurred_at_integer": {
+          "name": "quran_readings_occurred_at_integer",
+          "value": "typeof(\"occurred_at\") = 'integer'"
+        },
+        "quran_readings_utc_offset_min_integer": {
+          "name": "quran_readings_utc_offset_min_integer",
+          "value": "typeof(\"utc_offset_min\") = 'integer'"
+        },
+        "quran_readings_created_at_integer": {
+          "name": "quran_readings_created_at_integer",
+          "value": "typeof(\"created_at\") = 'integer'"
+        },
+        "quran_readings_updated_at_integer": {
+          "name": "quran_readings_updated_at_integer",
+          "value": "typeof(\"updated_at\") = 'integer'"
+        },
+        "quran_readings_id_check": {
+          "name": "quran_readings_id_check",
+          "value": "length(\"id\") = 36"
+        },
+        "quran_readings_mushaf_check": {
+          "name": "quran_readings_mushaf_check",
+          "value": "\"mushaf\" IN ('madinah_604')"
+        },
+        "quran_readings_mode_check": {
+          "name": "quran_readings_mode_check",
+          "value": "\"mode\" IN ('reading', 'memorization', 'revision')"
+        },
+        "quran_readings_start_page_check": {
+          "name": "quran_readings_start_page_check",
+          "value": "\"start_page\" BETWEEN 1 AND 604"
+        },
+        "quran_readings_end_page_check": {
+          "name": "quran_readings_end_page_check",
+          "value": "\"end_page\" BETWEEN \"start_page\" AND 604"
+        },
+        "quran_readings_start_ayah_check": {
+          "name": "quran_readings_start_ayah_check",
+          "value": "\"start_ayah\" >= 1"
+        },
+        "quran_readings_end_ayah_check": {
+          "name": "quran_readings_end_ayah_check",
+          "value": "\"end_ayah\" >= 1"
+        },
+        "quran_readings_duration_check": {
+          "name": "quran_readings_duration_check",
+          "value": "\"duration_min\" BETWEEN 1 AND 1440"
+        },
+        "quran_readings_occurred_at_check": {
+          "name": "quran_readings_occurred_at_check",
+          "value": "\"occurred_at\" BETWEEN 946684800000 AND 4102444800000"
+        },
+        "quran_readings_local_date_check": {
+          "name": "quran_readings_local_date_check",
+          "value": "\"local_date\" IS date(\"occurred_at\" / 1000 + \"utc_offset_min\" * 60, 'unixepoch')"
+        },
+        "quran_readings_time_zone_check": {
+          "name": "quran_readings_time_zone_check",
+          "value": "length(\"time_zone\") BETWEEN 1 AND 64"
+        },
+        "quran_readings_utc_offset_check": {
+          "name": "quran_readings_utc_offset_check",
+          "value": "\"utc_offset_min\" BETWEEN -720 AND 840 AND \"utc_offset_min\" % 15 = 0"
+        },
+        "quran_readings_created_at_check": {
+          "name": "quran_readings_created_at_check",
+          "value": "\"created_at\" BETWEEN 946684800000 AND 4102444800000"
+        },
+        "quran_readings_updated_at_check": {
+          "name": "quran_readings_updated_at_check",
+          "value": "\"updated_at\" >= \"created_at\""
+        },
+        "quran_readings_surah_pair_check": {
+          "name": "quran_readings_surah_pair_check",
+          "value": "(\"start_surah\" IS NULL) = (\"end_surah\" IS NULL)"
+        },
+        "quran_readings_ayah_pair_check": {
+          "name": "quran_readings_ayah_pair_check",
+          "value": "(\"start_ayah\" IS NULL) = (\"end_ayah\" IS NULL)"
+        },
+        "quran_readings_ayah_needs_surah_check": {
+          "name": "quran_readings_ayah_needs_surah_check",
+          "value": "\"start_ayah\" IS NULL OR \"start_surah\" IS NOT NULL"
+        },
+        "quran_readings_range_order_check": {
+          "name": "quran_readings_range_order_check",
+          "value": "\"end_surah\" IS NULL OR \"end_surah\" > \"start_surah\" OR (\"end_surah\" = \"start_surah\" AND (\"start_ayah\" IS NULL OR \"end_ayah\" >= \"start_ayah\"))"
+        }
+      }
+    },
+    "quran_surahs": {
+      "name": "quran_surahs",
+      "columns": {
+        "number": {
+          "name": "number",
+          "type": "integer",
+          "primaryKey": true,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "ayah_count": {
+          "name": "ayah_count",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "checkConstraints": {
+        "quran_surahs_ayah_count_integer": {
+          "name": "quran_surahs_ayah_count_integer",
+          "value": "typeof(\"ayah_count\") = 'integer'"
+        },
+        "quran_surahs_number_check": {
+          "name": "quran_surahs_number_check",
+          "value": "\"number\" BETWEEN 1 AND 114"
+        },
+        "quran_surahs_ayah_count_check": {
+          "name": "quran_surahs_ayah_count_check",
+          "value": "\"ayah_count\" BETWEEN 3 AND 286"
+        }
+      }
+    },
+    "sadaqas": {
+      "name": "sadaqas",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "text",
+          "primaryKey": true,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "kind": {
+          "name": "kind",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "amount_minor": {
+          "name": "amount_minor",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "currency": {
+          "name": "currency",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "description": {
+          "name": "description",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "occurred_at": {
+          "name": "occurred_at",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "local_date": {
+          "name": "local_date",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "time_zone": {
+          "name": "time_zone",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "utc_offset_min": {
+          "name": "utc_offset_min",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "note": {
+          "name": "note",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        }
+      },
+      "indexes": {
+        "sadaqas_by_date": {
+          "name": "sadaqas_by_date",
+          "columns": [
+            "local_date"
+          ],
+          "isUnique": false
+        },
+        "sadaqas_by_currency": {
+          "name": "sadaqas_by_currency",
+          "columns": [
+            "currency",
+            "local_date"
+          ],
+          "isUnique": false
+        }
+      },
+      "foreignKeys": {
+        "sadaqas_currency_currencies_code_fk": {
+          "name": "sadaqas_currency_currencies_code_fk",
+          "tableFrom": "sadaqas",
+          "tableTo": "currencies",
+          "columnsFrom": [
+            "currency"
+          ],
+          "columnsTo": [
+            "code"
+          ],
+          "onDelete": "restrict",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "checkConstraints": {
+        "sadaqas_amount_minor_integer": {
+          "name": "sadaqas_amount_minor_integer",
+          "value": "\"amount_minor\" IS NULL OR typeof(\"amount_minor\") = 'integer'"
+        },
+        "sadaqas_occurred_at_integer": {
+          "name": "sadaqas_occurred_at_integer",
+          "value": "typeof(\"occurred_at\") = 'integer'"
+        },
+        "sadaqas_utc_offset_min_integer": {
+          "name": "sadaqas_utc_offset_min_integer",
+          "value": "typeof(\"utc_offset_min\") = 'integer'"
+        },
+        "sadaqas_created_at_integer": {
+          "name": "sadaqas_created_at_integer",
+          "value": "typeof(\"created_at\") = 'integer'"
+        },
+        "sadaqas_updated_at_integer": {
+          "name": "sadaqas_updated_at_integer",
+          "value": "typeof(\"updated_at\") = 'integer'"
+        },
+        "sadaqas_id_check": {
+          "name": "sadaqas_id_check",
+          "value": "length(\"id\") = 36"
+        },
+        "sadaqas_kind_check": {
+          "name": "sadaqas_kind_check",
+          "value": "\"kind\" IN ('money', 'in_kind', 'time', 'other')"
+        },
+        "sadaqas_amount_check": {
+          "name": "sadaqas_amount_check",
+          "value": "\"amount_minor\" BETWEEN 1 AND 999999999999999"
+        },
+        "sadaqas_occurred_at_check": {
+          "name": "sadaqas_occurred_at_check",
+          "value": "\"occurred_at\" BETWEEN 946684800000 AND 4102444800000"
+        },
+        "sadaqas_local_date_check": {
+          "name": "sadaqas_local_date_check",
+          "value": "\"local_date\" IS date(\"occurred_at\" / 1000 + \"utc_offset_min\" * 60, 'unixepoch')"
+        },
+        "sadaqas_time_zone_check": {
+          "name": "sadaqas_time_zone_check",
+          "value": "length(\"time_zone\") BETWEEN 1 AND 64"
+        },
+        "sadaqas_utc_offset_check": {
+          "name": "sadaqas_utc_offset_check",
+          "value": "\"utc_offset_min\" BETWEEN -720 AND 840 AND \"utc_offset_min\" % 15 = 0"
+        },
+        "sadaqas_created_at_check": {
+          "name": "sadaqas_created_at_check",
+          "value": "\"created_at\" BETWEEN 946684800000 AND 4102444800000"
+        },
+        "sadaqas_updated_at_check": {
+          "name": "sadaqas_updated_at_check",
+          "value": "\"updated_at\" >= \"created_at\""
+        },
+        "sadaqas_amount_currency_check": {
+          "name": "sadaqas_amount_currency_check",
+          "value": "(\"amount_minor\" IS NULL) = (\"currency\" IS NULL)"
+        },
+        "sadaqas_money_amount_check": {
+          "name": "sadaqas_money_amount_check",
+          "value": "\"kind\" <> 'money' OR \"amount_minor\" IS NOT NULL"
+        }
+      }
+    }
+  },
+  "views": {},
+  "enums": {},
+  "_meta": {
+    "schemas": {},
+    "tables": {},
+    "columns": {}
+  },
+  "internal": {
+    "indexes": {
+      "dhikrs_active_name": {
+        "columns": {
+          "\"name\" COLLATE NOCASE": {
+            "isExpression": true
+          }
+        }
+      }
+    }
+  }
+}
